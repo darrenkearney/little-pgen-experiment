@@ -26,22 +26,22 @@ def get_input( message = "Provide a number: ", input_type = int ):
     
 
 # Set up Controls
-WORLD_X = get_input("What is the length of the area?: [100] ", int)
-WORLD_Y = get_input("What is the breath of the area?: [100] ", int)
-DENSITY = get_input("What is the density of nodes to space? (A percentage)", float)
+x = get_input("What is the length of the area?: [100] ", int)
+y = get_input("What is the breath of the area?: [100] ", int)
+density = get_input("What is the density of nodes to space? (A percentage)", float)
 
-print("World size: {} by {}.".format( WORLD_X, WORLD_Y ))
+print("World size: {} by {}.".format( x, y ))
 
 # Run the Generator
-gen = WorldGenerator(
-    WORLD_X = WORLD_X,
-    WORLD_Y = WORLD_Y,
-    DENSITY = DENSITY )
+gameworld = WorldGenerator(
+    WORLD_X = x,
+    WORLD_Y = y,
+    NODE_DENSITY = density )
 
-gen.setup_world_coords()
+gameworld.setup_world_coords()
 
-gen.view_world()
+#gameworld.view_world_coords()
 
-#print("the generators world_x: {}, world_y: {}, density: {}".format(gen.WORLD_X, WORLD_Y, DENSITY))
-# Debug code
-#print(gen.__dict__)
+gameworld.generate_world()
+
+gameworld.view_grid()
